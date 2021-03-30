@@ -1,8 +1,11 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { Dimensions, Platform } from 'react-native';
+import { store } from '../redux/store';
 
 let { height, width } = Dimensions.get('window');
+let accountType= store.getState().AuthReducer.accountType
 
+alert(accountType)
 EStyleSheet.build({
 
     /* //////////////////////////////////
@@ -11,7 +14,7 @@ EStyleSheet.build({
 
     $MainFont: 'Gotham-Book',
     $colorFan: '#4b14f3',
-
+    $UserColor: accountType=='FAN'?'#4b14f3':accountType=='BAND'?'green':'grey',
     /* //////////////////////////////////
                 COMPONENTES
     ////////////////////////////////////*/
@@ -112,3 +115,4 @@ EStyleSheet.build({
         }
 
 });
+
